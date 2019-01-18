@@ -1,5 +1,5 @@
 # this is needed to define a path using 'path()', which will
-# fetch from the 'views.py' the urls we'll use
+# fetch from the 'views.py' the HTML we'll use
 from django.urls import path
 
 # read this as 'from all, import viwes'
