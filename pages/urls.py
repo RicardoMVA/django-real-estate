@@ -6,7 +6,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # this is fetching the root/index page defined in the 
+    # this is fetching the root/index page defined in the
     # 'views.py' file
     path('', views.index, name='index')
 ]
