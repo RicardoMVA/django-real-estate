@@ -1,6 +1,8 @@
 {# this means that 'base.html' will be used as a template here #}
 {% extends 'base.html' %}
 
+{% load static %}
+
 {# this wraps the specific 'about.html' content that will be
 inserted in 'base.html' #}
 {% block content %}
@@ -22,7 +24,7 @@ inserted in 'base.html' #}
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="index.html">
+            <a href="{% url 'index' %}">
               <i class="fas fa-home"></i> Home</a>
           </li>
           <li class="breadcrumb-item active"> About</li>
@@ -37,7 +39,7 @@ inserted in 'base.html' #}
         <div class="col-md-8">
           <h2>We Search For The Perfect Home</h2>
           <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
-          <img src="assets/img/about.jpg" alt="">
+          <img src="{% static 'img/about.jpg' %}" alt="">
           <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis esse officia repudiandae ad saepe ex, amet
             neque quod accusamus rem quia magnam magni dolorum facilis ullam minima perferendis? Exercitationem at quaerat
             commodi id libero eveniet harum perferendis laborum molestias quia.</p>
