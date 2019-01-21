@@ -20,5 +20,6 @@ urlpatterns = [
     # this sets up the index page, by linking to the 'urls.py'
     # file inside the 'pages' folder
     path('', include('pages.urls')),
+    path('listings/', include('listings.urls')),
     path('admin/', admin.site.urls),
 ]

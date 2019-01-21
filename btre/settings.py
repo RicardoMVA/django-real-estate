@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # this 'PagesConfig' comes from the 'apps.py' file inside
     # the 'pages' folder
     'pages.apps.PagesConfig',
+    'listings.apps.ListingsConfig',
+    'realtors.apps.RealtorsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
