@@ -4,4 +4,7 @@ from .models import Listing
 
 # Register your models here.
 
+class ListingAdmin(admin.ModelAdmin):
+
+
 admin.site.register(Listing)
