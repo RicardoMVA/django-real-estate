@@ -87,29 +87,58 @@
       			<p>No Listings Available</p>
       		</div>
       	{% endif %}
-
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#">&laquo;</a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">&raquo;</a>
-            </li>
-          </ul>
-        </div>
       </div>
-    </div>
+
+	  <div class="row">
+	    <div class="col-md-12">
+	      <!-- checks if there's other pages -->
+	      {% if listings.has_other_pages %}
+	        <ul class="pagination">
+	          <!-- checks if there's a previous page -->
+	          {% if listings.has_previous %}
+	            <li class="page-item">
+	            	<a href="?page={{listings.previous_page_number}}" class="page-link">&laquo;
+	            	</a>
+	            </li>
+	          <!-- runs if there's no previous page -->
+	          {% else %}
+	            <li class="page-item disabled">
+	            	<a class="page-link">&laquo;
+	            	</a>
+	            </li>
+	          {% endif %}
+	          <!-- makes pages based on number of things inside 'listings' and range defined in 'Paginator' -->
+	          {% for i in listings.paginator.page_range %}
+	            <!-- highlight the current page number -->
+	          	{% if listings.number == i %}
+	          	  <li class="page-item active">
+	          	  	<a class="page-link">{{i}}</a>
+	          	  </li>
+	          	<!-- shows other pages numbers -->
+	          	{% else %}
+	          	  <li class="page-item">
+	          	  	<a href="?page={{i}}" class="page-link">{{i}}</a>
+	          	  </li>
+	          	{% endif %}
+	          {% endfor %}
+	          <!-- checks if there's a next page -->
+	          {% if listings.has_next %}
+	            <li class="page-item">
+	            	<a href="?page={{listings.next_page_number}}" class="page-link">&raquo;
+	            	</a>
+	            </li>
+	          <!-- runs if there's no previous page -->
+	          {% else %}
+	            <li class="page-item disabled">
+	            	<a class="page-link">&raquo;
+	            	</a>
+	            </li>
+	          {% endif %}
+	        </ul>
+	      {% endif %}
+	    </div>
+	  </div>
+	</div>
   </section>
 
 {% endblock %}
