@@ -11,7 +11,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def index(request):
     # this fetches the info from the database
-    listings = Listing.objects.all()
+    listings = Listing.objects.order_by('-list_date')
 
     # this defines how pagination will work, in this
     # case take the 'listings' and paginate 3 per page
