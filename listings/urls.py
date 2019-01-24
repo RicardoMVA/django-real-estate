@@ -14,5 +14,6 @@ urlpatterns = [
     path('', views.index, name='listings'),
     # this will fetch the listing id
     path('<int:listing_id>', views.listing, name='listing'),
-    path('search', views.search, name='search')
+    # used to submit search form
+    path('search', views.search, name='search'),
 ]
