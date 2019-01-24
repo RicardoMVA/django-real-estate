@@ -23,7 +23,7 @@ def about(request):
     realtors = Realtor.objects.order_by('-hire_date')
 
     # get seller of the month
-    mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
+    mvp_realtors = Realtor.objects.filter(is_mvp=True)
 
     context = {
         'realtors': realtors,
