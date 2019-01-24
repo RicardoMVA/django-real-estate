@@ -6,6 +6,8 @@ from .models import Listing
 # import to use pagination
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
+# used in the search
+from listings.choices import bedroom_choices, price_choices, state_choices
 
 
 # Create your views here.
@@ -48,4 +50,10 @@ def listing(request, listing_id):
 
 
 def search(request):
-    return render(request, 'listings/search.html')
+    # this passes the search options to the search page
+    context = {
+        'bedroom_choices': bedroom_choices,
+        'state_choices': state_choices,
+        'price_choices': price_choices
+    }
+    return render(request, 'listings/search.html', context)
