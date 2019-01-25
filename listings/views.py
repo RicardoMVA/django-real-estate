@@ -126,6 +126,7 @@ def search(request):
         'state_choices': state_choices,
         'price_choices': price_choices,
         'listings': paged_listings,
+        'values': request.GET,
         'keywords': keywords,
         'city': city,
         'state': state,
