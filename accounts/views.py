@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 def register(request):
     if request.method == 'POST':
         # register user
-
+        return render(request, 'accounts/register.html')
     else:
         return render(request, 'accounts/register.html')
 
@@ -12,7 +12,7 @@ def register(request):
 def login(request):
     if request.method == 'POST':
         # login user
- 
+        return render(request, 'accounts/login.html')
     else:
         return render(request, 'accounts/login.html')
 
