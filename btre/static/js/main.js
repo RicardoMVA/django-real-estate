@@ -1,7 +1,7 @@
 const date = new Date();
 document.querySelector('.year').innerHTML = date.getFullYear();
 
-// makes alert messages disappear after 3 sec
+// makes alert messages disappear after 4 sec
 setTimeout(function(){
 	$('#message').fadeOut('slow');
-}, 3000);
+}, 4000);
