@@ -1,4 +1,4 @@
-{# this loads static files #}
+<!-- this loads static files -->
 {% load static %}
 
 <!DOCTYPE html>
@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Lightbox -->
     <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
-
-	<title>BT Real Estate</title>
+    <!-- this makes the title dynamic -->
+	<title>{% block title %} {% endblock %} - BT Real Estate</title>
 </head>
 
 <body>
