@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 def register(request):
     if request.method == 'POST':
-        # get form values
+        # stores passed info from form
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
@@ -56,14 +56,34 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        # login user
+        # stores passed 'username' and 'password' from form
+        username = request.POST['username']
+        password = request.POST['password']
+
+        # checks if the user exists in DB
+        user = auth.authenticate(
+            username=username,
+            password=password)
+
+        # if the user doesn't exists, 'user' returns 'none'
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid credentials')
+            return redirect('login')
+
         return render(request, 'accounts/login.html')
     else:
         return render(request, 'accounts/login.html')
 
 
 def logout(request):
-    return redirect('index')
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'Logged out')
+        return redirect('index')
 
 
 def dashboard(request):
