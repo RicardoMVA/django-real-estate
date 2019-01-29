@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Listing
 
 # import to use pagination
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.paginator import Paginator
 
 # used in the search
 from listings.choices import bedroom_choices, price_choices, state_choices
@@ -59,7 +59,8 @@ def search(request):
             # this filters the results so that only the ones
             # that contains inside its 'description' field what
             # was passed in the 'keywords' form will be shown
-            queryset_list = queryset_list.filter(description__icontains=keywords)
+            queryset_list = queryset_list.filter(
+                description__icontains=keywords)
     else:
         keywords = ''
 
@@ -70,7 +71,8 @@ def search(request):
             # this filters the results so that only the ones
             # that contains exactly the 'city' that was passed
             # in the 'city' form will be shown (case insensitive)
-            queryset_list = queryset_list.filter(city__iexact=city)
+            queryset_list = queryset_list.filter(
+                city__iexact=city)
     else:
         city = ''
 
@@ -81,7 +83,8 @@ def search(request):
             # this filters the results so that only the ones
             # that contains exactly the 'state' that was passed
             # in the 'state' form will be shown (case insensitive)
-            queryset_list = queryset_list.filter(state__iexact=state)
+            queryset_list = queryset_list.filter(
+                state__iexact=state)
     else:
         state = ''
 
@@ -93,7 +96,8 @@ def search(request):
             # that contains up to the number of 'bedrooms' that
             # was passed in the 'bedrooms' form will be shown
             # ('lte' stands for 'less than or equal to')
-            queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
+            queryset_list = queryset_list.filter(
+                bedrooms__lte=bedrooms)
     else:
         bedrooms = ''
 
@@ -104,7 +108,8 @@ def search(request):
             # this filters the results so that only the ones
             # that contains up to the number of 'price' that was
             # passed in the 'price' form will be shown
-            queryset_list = queryset_list.filter(price__lte=price)
+            queryset_list = queryset_list.filter(
+                price__lte=price)
     else:
         price = ''
 
