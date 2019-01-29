@@ -60,7 +60,8 @@ def search(request):
             # that contains inside its 'description' field what
             # was passed in the 'keywords' form will be shown
             queryset_list = queryset_list.filter(
-                description__icontains=keywords)
+                description__icontains=keywords
+            )
     else:
         keywords = ''
 
@@ -72,7 +73,8 @@ def search(request):
             # that contains exactly the 'city' that was passed
             # in the 'city' form will be shown (case insensitive)
             queryset_list = queryset_list.filter(
-                city__iexact=city)
+                city__iexact=city
+            )
     else:
         city = ''
 
@@ -84,7 +86,8 @@ def search(request):
             # that contains exactly the 'state' that was passed
             # in the 'state' form will be shown (case insensitive)
             queryset_list = queryset_list.filter(
-                state__iexact=state)
+                state__iexact=state
+            )
     else:
         state = ''
 
@@ -97,7 +100,8 @@ def search(request):
             # was passed in the 'bedrooms' form will be shown
             # ('lte' stands for 'less than or equal to')
             queryset_list = queryset_list.filter(
-                bedrooms__lte=bedrooms)
+                bedrooms__lte=bedrooms
+            )
     else:
         bedrooms = ''
 
@@ -109,7 +113,8 @@ def search(request):
             # that contains up to the number of 'price' that was
             # passed in the 'price' form will be shown
             queryset_list = queryset_list.filter(
-                price__lte=price)
+                price__lte=price
+            )
     else:
         price = ''
 
