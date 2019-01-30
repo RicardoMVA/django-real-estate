@@ -5,6 +5,9 @@ from django.contrib import messages, auth
 # imports 'User' model needed for authentication
 from django.contrib.auth.models import User
 
+# used to fetch user id for dashboard
+from contacts.models import Contact
+
 
 def register(request):
     if request.method == 'POST':
@@ -87,4 +90,15 @@ def logout(request):
 
 
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    # fetch all 'contacts' objects
+    user_contacts = (Contact.objects
+                     # order 'contacts' by date
+                     .order_by('-contact_date')
+                     # filter 'contacts' by current 'user.id'
+                     .filter(user_id=request.user.id))
+
+    context = {
+        'contacts': user_contacts
+    }
+
+    return render(request, 'accounts/dashboard.html', context)
