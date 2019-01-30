@@ -10,8 +10,12 @@ from listings.choices import bedroom_choices, price_choices, state_choices
 
 
 def index(request):
-    # this [:3] means only the first 3 entries will be loaded
-    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+    listings = (Listing.objects
+                .order_by('-list_date')
+                .filter(is_published=True)
+                # this [:3] means only the first 3 entries
+                # will be loaded
+                [:3])
 
     context = {
         'listings': listings,
