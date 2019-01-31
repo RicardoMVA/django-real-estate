@@ -46,20 +46,20 @@ def contact(request):
 
         contact.save()
 
-        # Send email
-        send_mail(
-            # title of the email
-            'Property Listing Inquiry',
-            # body of the email
-            'There has been an inquiry for ' +
-            listing +
-            '. Sign into the admin panel for more info.',
-            # which email will be used to send
-            'dummy',
-            # to whom the email will be sent
-            [realtor_email, 'dummy'],
-            fail_silently=False
-        )
+        # # Send email
+        # send_mail(
+        #     # title of the email
+        #     'Property Listing Inquiry',
+        #     # body of the email
+        #     'There has been an inquiry for ' +
+        #     listing +
+        #     '. Sign into the admin panel for more info.',
+        #     # which email will be used to send
+        #     'dummy',
+        #     # to whom the email will be sent
+        #     [realtor_email, 'dummy'],
+        #     fail_silently=False
+        # )
 
         messages.success(
             request,
